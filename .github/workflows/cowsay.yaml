@@ -8,11 +8,15 @@ jobs:
         steps:
         - name: checkout
           uses: actions/checkout@v4
-          
-        - name: list files
-          run: ls -ltra
 
         - name: installing cowsay
-          run: |
-            chmod +x ascii-image.sh
-            ./ascii-image.sh
+          run: sudo apt-get install cowsay -y
+
+        - name: execute cowsay cmd
+          run: cowsay -f dragon "Run for cover, I am a Dragon.....RAWR" >> dragon.txt
+        
+        - name: read the file
+          run: cat dragon.txt
+
+        - name: list files
+          run: ls -ltra

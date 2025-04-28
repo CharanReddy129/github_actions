@@ -1,4 +1,4 @@
-name: first workflow
+name: script execution workflow
 
 on: push
 
@@ -9,12 +9,12 @@ jobs:
         - name: cheching out the code
           uses: actions/checkout@v4
         
-        - name: welcome message
-          run: |
-            echo "welcome to github actions" 
-            ls -ltra
-            cat README.md
+        - name: listing the files 
+          run: ls -ltr
         
-
-        # - name: listing the files 
-        #   run: ls -ltr
+        - name: executing the script
+          run: |
+            chmod -x ascii-image.sh
+            ./ascii-image.sh
+            
+        
