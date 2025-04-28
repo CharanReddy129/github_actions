@@ -1,0 +1,23 @@
+name: nodeJs workflow
+
+on: push
+
+jobs:
+    nodeJs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+            
+            - name: setting up node environment
+              uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+
+            - name: install dependences
+              run: npm install
+
+            - name: build project
+              run: |
+                npm run build
+                echo "build is successful"
