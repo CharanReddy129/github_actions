@@ -4,10 +4,21 @@ on: push
 
 env:
     DOCKER_USERNAME: charanreddy12
-    DOCKER_IMAGE: java_maven
+    DOCKER_IMAGE: testimage
 jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-          - name: docker version
-            run: docker version
+          - name: checkout
+            uses: actions/checkout@v4
+
+          - name: docker login
+            env:
+                DOCKER_PASSWORD: dckr_pat_J0cB7U6fMZ4oh6enzfR2fqTqOWs
+            run: docker login --username=${{ env.DOCKER_USERNAME }} --password=${{ env.DOCKER_PASSWORD }}
+
+          - name: docker build
+            run: docker build -t ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest .
+
+          - name: docker push
+            run: docker push ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
