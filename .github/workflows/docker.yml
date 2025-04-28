@@ -5,6 +5,7 @@ on: push
 env:
     DOCKER_USERNAME: charanreddy12
     DOCKER_IMAGE: testimage
+    IMAGE_TAG: v1.0.1
 jobs:
   # this is for testing the docker commands 
     # test:
@@ -41,4 +42,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:v1.0.0
+          tags: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying the docker image
+        run: docker run -d --name demo -p 80:80 ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
