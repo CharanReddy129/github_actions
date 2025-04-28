@@ -20,4 +20,4 @@ jobs:
             - name: build project
               run: |
                 npm run build
-                echo "build is successful"
+                npm run test

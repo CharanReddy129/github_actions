@@ -1,13 +1,22 @@
 {
-    "name": "github-actions-demo",
-    "version": "1.0.0",
-    "description": "A simple project to practice GitHub Actions CI",
-    "main": "index.js",
-    "scripts": {
-      "build": "echo 'Building project...'",
-      "test": "echo 'Running tests...' && exit 0"
-    },
-    "author": "Charan",
-    "license": "MIT"
+  "name": "github-actions-practice",
+  "version": "1.0.0",
+  "description": "Practice GitHub Actions with a basic Node.js app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "echo 'Simulating a build step... Done!'",
+    "test": "echo 'All tests passed!' && exit 0"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "ci",
+    "nodejs"
+  ],
+  "author": "Charan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
   }
-  
+}
