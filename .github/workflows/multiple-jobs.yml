@@ -1,0 +1,47 @@
+name: multiple jobs execution
+
+on:
+    push
+
+jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: installing cowsay cli
+          run: sudo apt-get install cowsay -y
+
+        - name: cowsay cmd
+          run: cowsay -f dragon "Run for cover, I am a Dragon.....RAWR" >> dragon.txt
+
+        - name: uploading the artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: dragon-file
+            path: dragon.txt
+    
+    test-job:
+        needs: build-job
+        runs-on: ubuntu-latest
+        steps:
+        - name: downloading artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: dragon-file
+        
+        - name: grep the file
+          run: grep -i "dragon" dragon.txt
+
+    deploy-job:
+        needs: [build-job,test-job]
+        runs-on: ubuntu-latest
+        steps:
+        - name: downloading artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: dragon-file
+        
+        - name: reading the file content
+          run: cat dragon.txt
+        
+        - name: final message
+          run: echo "three stages are completed"

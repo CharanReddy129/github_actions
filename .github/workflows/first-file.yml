@@ -1,6 +1,7 @@
 name: script execution workflow
 
-on: push
+on:
+    workflow_dispatch:
 
 jobs:
     first-job:
