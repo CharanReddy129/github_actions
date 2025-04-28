@@ -19,5 +19,6 @@ jobs:
 
             - name: build project
               run: |
+                npm start
                 npm run build
                 npm run test
