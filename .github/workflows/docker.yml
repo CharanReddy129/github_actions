@@ -1,0 +1,13 @@
+name: docker build, push and delpoy
+
+on: push
+
+env:
+    DOCKER_USERNAME: charanreddy12
+    DOCKER_IMAGE: java_maven
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+          - name: docker version
+            run: docker version
