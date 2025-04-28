@@ -6,11 +6,15 @@ jobs:
     first-job:
         runs-on: ubuntu-latest
         steps:
-        - name: welcome message
-          run: echo "welcome to github actions" 
-        
         - name: cheching out the code
           uses: actions/checkout@v4
+        
+        - name: welcome message
+          run: |
+            echo "welcome to github actions" 
+            ls -ltra
+            cat README.md
+        
 
-        - name: listing the files 
-          run: ls -ltr
+        # - name: listing the files 
+        #   run: ls -ltr
