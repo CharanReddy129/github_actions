@@ -19,4 +19,4 @@ jobs:
           run: cat dragon.txt
 
         - name: list files
-          run: ls-ltra
+          run: ls -ltra
