@@ -4,8 +4,8 @@ jobs:
     delpoy-matrix:
         strategy:
           matrix:
-            os: [ubuntu-latest, windows-latest, ubuntu-20.04]
-            images: [hello-world, nginx]
+            os: [ubuntu-latest, windows-latest, ubuntu-22.04]
+            images: [hello-world]
         runs-on: ${{ matrix.os }}
         steps:
             - name: Docker Version
