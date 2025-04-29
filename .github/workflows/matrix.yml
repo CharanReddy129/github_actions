@@ -1,20 +1,16 @@
 name: matrix jobs
 on: push
 jobs:
-    delpoy-ubuntu:
-        runs-on: ubuntu-latest
+    delpoy-matrix:
+        strategy:
+          matrix:
+            os: [ubuntu-latest, windows-latest, macos-latest]
+            images: [hello-world, nginx]
+        runs-on: ${{ matrix.os }}
         steps:
             - name: Docker Version
               run: docker version
 
-            - name: Run Docker Image
-              run: docker run hello-world
+            - name: Run Docker Image on ${{ matrix.os }}
+              run: docker run ${{ matrix.images }}
     
-    deploy-windows:
-        runs-on: windows-latest
-        steps:
-            - name: Docker Version
-              run: docker version
-
-            - name: Run Docker Image
-              run: docker run hello-world
