@@ -3,9 +3,17 @@ on: push
 jobs:
     delpoy-matrix:
         strategy:
+          fail-fast: false
+          max-parallel: 1
           matrix:
             os: [ubuntu-latest, windows-latest, ubuntu-22.04]
-            images: [hello-world]
+            images: [hello-world, alpine]
+            exclude:
+              - images: alpine
+                os: windows-latest
+            include:
+              - images: nginx
+                os: ubuntu-22.04
         runs-on: ${{ matrix.os }}
         steps:
             - name: Docker Version
