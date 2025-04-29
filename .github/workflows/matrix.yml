@@ -4,7 +4,7 @@ jobs:
     delpoy-matrix:
         strategy:
           fail-fast: false
-          max-parallel: 1
+          max-parallel: 3
           matrix:
             os: [ubuntu-latest, windows-latest, ubuntu-22.04]
             images: [hello-world, alpine]
@@ -12,7 +12,7 @@ jobs:
               - images: alpine
                 os: windows-latest
             include:
-              - images: nginx
+              - images: scratch
                 os: ubuntu-22.04
         runs-on: ${{ matrix.os }}
         steps:
