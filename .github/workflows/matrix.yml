@@ -4,7 +4,7 @@ jobs:
     delpoy-matrix:
         strategy:
           matrix:
-            os: [ubuntu-latest, windows-latest, macos-latest]
+            os: [ubuntu-latest, windows-latest, ubuntu-20.04]
             images: [hello-world, nginx]
         runs-on: ${{ matrix.os }}
         steps:
