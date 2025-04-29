@@ -1,6 +1,6 @@
 name: nodeJs workflow
 
-on: push
+on: workflow_dispatch
 
 jobs:
     nodeJs:

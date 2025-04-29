@@ -1,0 +1,20 @@
+name: matrix jobs
+on: push
+jobs:
+    delpoy-ubuntu:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Docker Version
+              run: docker version
+
+            - name: Run Docker Image
+              run: docker run hello-world
+    
+    deploy-windows:
+        runs-on: windows-latest
+        steps:
+            - name: Docker Version
+              run: docker version
+
+            - name: Run Docker Image
+              run: docker run hello-world
